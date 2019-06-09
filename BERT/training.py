@@ -49,7 +49,6 @@ train_examples = [InputExample('train', row.tweet, label=row.label) for row in t
 val_examples = [InputExample('val', row.tweet, label=row.label) for row in val.itertuples()]
 
 orginal_total = len(train_examples)
-train_examples = train_examples[:int(orginal_total*0.2)]
 
 #model parameter (for 16GB RAM settings)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -63,7 +62,7 @@ if sys.argv[2] == 'cased':
     do_lower=False
 output_dir = 'output'
 bert_model = 'bert-base-uncased'
-num_train_epochs = 9
+num_train_epochs = 6
 num_train_optimization_steps = int(
             len(train_examples) / train_batch_size / gradient_accumulation_steps) * num_train_epochs
 cache_dir = "model"
@@ -90,6 +89,9 @@ else:
     model = BertForSequenceClassification.from_pretrained(MODEL,
                   cache_dir=cache_dir,
                   num_labels = 2)
+
+model.load_state_dict(torch.load('./BERT/bert_task'+str(sys.argv[1])+str(sys.argv[2])+'.pkl'))
+
 model.to(device)
 if n_gpu > 1:
     model = torch.nn.DataParallel(model)
