@@ -1,0 +1,113 @@
+#### Tree Depth = 500
+    Building Model Subtask A with DT...
+    Training Accuracy: 0.9686381296316817Test Accuracy: 0.7280574931304165
+    Confusion Matrix:
+    [[529  91]
+    [ 96 144]]
+
+    Building Model Subtask B with DT...
+    Training Accuracy: 0.9629878686306848
+    Test Accuracy: 0.5529774892235645
+    Confusion Matrix:
+    [[201  12]
+    [ 23   4]]
+
+    Building Model Subtask C with DT...
+    Training Accuracy: 0.9319129891824455
+    Test Accuracy: 0.42026192824582714
+    Confusion Matrix:
+    [[39 35  4]
+    [14 80  6]
+    [16 18  1]]
+
+    Building Model Subtask A with RF...
+    Training Accuracy: 0.9795196564164859
+    Test Accuracy: 0.7212227300722877
+    Confusion Matrix:
+    [[598  22]
+    [138 102]]
+
+    Building Model Subtask B with RF...
+    Training Accuracy: 0.9760149011863368
+    Test Accuracy: 0.5045492774676963
+    Confusion Matrix:
+    [[212   1]
+    [ 26   1]]
+
+    Building Model Subtask C with RF...
+    Training Accuracy: 0.9925106209308034
+    Test Accuracy: 0.43790476190476185 
+    Confusion Matrix:
+    [[41 37  0]
+    [ 8 91  1]
+    [13 22  0]]
+
+
+
+    Building Model Subtask A with LR...
+    Training Accuracy: 0.9001384201788922
+    Test Accuracy: 0.6982007434944237
+    Confusion Matrix:
+    [[584  36]
+    [141  99]]
+
+    Building Model Subtask B with LR...
+    Training Accuracy: 0.9780454897452479
+    Test Accuracy: 0.5281675818588569
+    Confusion Matrix:
+    [[209   4]
+    [ 25   2]]
+
+    Building Model Subtask C with LR...
+    Training Accuracy: 0.9635886321509712
+    Test Accuracy: 0.434647201946472
+    Confusion Matrix:
+    [[40 35  3]
+    [ 9 90  1]
+    [10 25  0]]
+
+
+Tree Size = 300
+    Building Model Subtask A with DT...
+    Training Accuracy: 0.9507569736027561
+    Test Accuracy: 0.725526944806606
+    Confusion Matrix:
+    [[530  90]
+    [ 98 142]]
+
+    Building Model Subtask B with DT...
+    Training Accuracy: 0.9589387534178822
+    Test Accuracy: 0.546360153256705
+    Confusion Matrix:
+    [[199  14]
+    [ 23   4]]
+
+    Building Model Subtask C with DT...
+    Training Accuracy: 0.9408728976602957
+    Test Accuracy: 0.43395626748029487
+    Confusion Matrix:
+    [[41 33  4]
+    [18 77  5]
+    [15 18  2]]
+
+    Building Model Subtask A with RF...
+    Training Accuracy: 0.9362172695436966
+    Test Accuracy: 0.72127949710456
+    Confusion Matrix:
+    [[600  20]
+    [139 101]]
+
+    Building Model Subtask B with RF...
+    Training Accuracy: 0.9718928288896747
+    Test Accuracy: 0.4690265486725663
+    Confusion Matrix:
+    [[212   1]
+    [ 27   0]]
+
+    Building Model Subtask C with RF...
+    Training Accuracy: 0.9901672123879791
+    Test Accuracy: 0.4280973659897807
+    Confusion Matrix:
+    [[41 37  0]
+    [12 88  0]
+    [11 24  0]]

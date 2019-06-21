@@ -13,14 +13,14 @@ def clean(tweet):
     tweet = tweet.lower()
     tweet = re.sub("\d+", " ", tweet)
     tweet = word_tokenize(tweet)
-    tweet = [i for i in tweet if not i in stop_words]
+    # tweet = [i for i in tweet if not i in stop_words]
     tweet = [lematizer.lemmatize(i) for i in tweet]
     return ' '.join(tweet)
 
 def clean_cased(tweet):
     tweet = re.sub("\d+", " ", tweet)
     tweet = word_tokenize(tweet)
-    tweet = [i for i in tweet if not i in stop_words]
+    # tweet = [i for i in tweet if not i in stop_words]
     tweet = [lematizer.lemmatize(i) for i in tweet]
     return ' '.join(tweet)
 
