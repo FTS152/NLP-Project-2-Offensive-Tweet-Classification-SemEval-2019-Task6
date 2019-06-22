@@ -1,6 +1,7 @@
 #### Tree Depth = 500
     Building Model Subtask A with DT...
-    Training Accuracy: 0.9686381296316817Test Accuracy: 0.7280574931304165
+    Training Accuracy: 0.9686381296316817
+    Test Accuracy: 0.7280574931304165
     Confusion Matrix:
     [[529  91]
     [ 96 144]]

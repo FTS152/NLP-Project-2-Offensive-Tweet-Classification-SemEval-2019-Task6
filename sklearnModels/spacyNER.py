@@ -7,16 +7,14 @@ from sklearn.metrics import f1_score
 nlp = spacy.load('en_core_web_sm')
 
 
-data = pd.read_csv('./uncased_processed_train.csv')
+data = pd.read_csv('./uncased_processed_testc.csv')
 
 correct = 0
 incorrect = 0
 
 orgs = set(['NORP', 'ORG'])
-peps = set([])
 
 pred = []
-orig = []
 for i, d in data.iterrows():
     if pd.isna(d['subtask_c']):
         continue
@@ -27,8 +25,7 @@ for i, d in data.iterrows():
             tag = 'GRP'
 
     pred.append(tag)
-    orig.append(d['subtask_c'])
 
         
-print(f1_score(orig, pred, average='macro'))    
+print(f1_score(data['subtask_c'], pred, average='macro'))    
 

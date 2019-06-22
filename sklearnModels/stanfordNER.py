@@ -8,7 +8,7 @@ train, test = Load('c')
 
 ner = StanfordNERTagger('./stanford-ner-2018-10-16/classifiers/english.all.3class.distsim.crf.ser.gz', './stanford-ner-2018-10-16/stanford-ner.jar')
 
-data = test
+data = train
 
 data['tweet'] = ner.tag_sents(data['tweet'].str.split(' '))
 
