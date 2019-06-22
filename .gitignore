@@ -1,0 +1,12 @@
+
+__pycache__/
+
+stopwords/
+
+Report/report\.aux
+
+Report/report\.bbl
+
+Report/report\.blg
+
+Report/report\.log
