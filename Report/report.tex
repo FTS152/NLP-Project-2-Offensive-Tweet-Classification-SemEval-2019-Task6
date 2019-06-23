@@ -97,13 +97,13 @@
             We also tried to take a general approach to this classfication problem, as it relies somewhat less on specific natural language characteristics, and more on just pattern recognition. After preoprocessing, we transformed the tweets into vectors using TFIDF-Vectorizers, and ran the 3 subtasks through Naive Bayes, K-Nearest Neighbours, Decision Tree, Random Forest, and Linear Regression, all using the provided models found in the Sci-kit Learn \cite{scikit-learn} packages.
 
             Of the tested models, Decision Tree and Linear Regression performed the best, though still somewhat short of our BERT method, while Random Forest performed slightly poorer, while also requiring much longer to train.
+        \subsection{BERT Models}
+            We also elected to use Google's BERT \cite{bert} designed for NLP tasks. This model is the best performing method out of all of the ones we tried, but required large amounts of computation power, and a very long training time for each subtask. This leads to this method being viable for our rather small dataset, but could possibly be not worth it for larger, more complete data.
         \subsection{Neural Network Models}
             \subsubsection{CNN}
                 Based on a paper from WildML \cite{wildML}, we decided to take a non traditional approach and tried out the use of CNN in our prediction. The use of CNN with natural language leads to a behaviour similar to an optimized version of n-gram models, segmenting our tweets into semantical parts. Surprisingly, the model performed quite well, similar to general machine learning models, while requiring extremely low training time.
             \subsubsection{BiLSTM}
                 We tried out the BiLSTM from the Keras package \cite{keras}, which is often used in NLP modelling. However, our model performed poorly, sometimes worse than our general models, while also taking a long time to train, and we neglected to investigate further.
-        \subsection{BERT Models}
-            We also elected to use Google's BERT \cite{bert} designed for NLP tasks. This model is the best performing method out of all of the ones we tried, but required large amounts of computation power, and a very long training time for each subtask. This leads to this method being viable for our rather small dataset, but could possibly be not worth it for larger, more complete data.
     \section{Experiments}
         The following are the experiments we did for each model used in our testing. Our computer ran a Intel 9400f CPU clocked at 4.1GHz x1/ 3.9GHz x6, running Windows 10 Home Edition. For all time related metrics mentioned, it can be assumed that the testing conditions were all roughly equivalent.
     \subsection{Domain Knowledge Models}
@@ -143,12 +143,7 @@
 
         Each model took around 30 minutes to train, and didn't scale greatly with an increase in dataset size.
 
-    \subsection{Neural Network Models}
-        \subsubsection{CNN}
-
-        \subsubsection{BiLSTM}
     \subsection{BERT}
-        
         \begin{center}
             \begin{tabular}{l|ccc}
                 Method & Subtask a & Subtask b & Subtask c \\
@@ -166,11 +161,54 @@
         
         As most tweets are made through a phone app these days, which automatically capitalize the first letters of proper nouns, we suspect this leads a better recognition of named entities in our model, leading to a higher accuracy on subtask c.
 
+        A major problem with BERT however, is the massive amount of time required to train the model. With our relatively small data set size, it still took 4.5 hours to train on on subtask a, and 1.5 hours on subtasks b and c, with the time proportional to data set size. With some additional tuning, it could run slightly faster, though we realize that this method may not be very useful as of now, beyond the scope of a competition with no time constraints.
 
+        \newpage
+        \subsection{Neural Network Models}
+        \begin{center}
+            \begin{tabular}{l|ccc}
+                Dataset & Subtask a & Subtask b & Subtask c \\
+                \hline
+                CNN & 0.613 & 0.928 & 0.442 \\
+                BiLSTM & 0.630 & 0.916 & 0.452 \\
+                BiGRU & 0.602 & 0.913 & 0.436
+            \end{tabular}       
+            \captionof{table}{Validation Set accuracy of NN model.}
+            \label{nnValidTable}
+        \end{center}
+
+        \begin{center}
+            \begin{tabular}{l|ccc}
+                Dataset & Subtask a & Subtask b & Subtask c \\
+                \hline
+                CNN & 0.738 & 0.655 & 0.472 \\
+                BiLSTM & 0.702 & 0.638 & 0.435 \\
+                BiGRU & 0.686 & 0.612 & 0.471
+            \end{tabular}       
+            \captionof{table}{Testing Set accuracy of NN model.}     
+            \label{nnTestTable}
+        \end{center}
+        
+        As seen in Table \ref{nnValidTable} and \ref{nnTestTable}, our neural network based models also perform quite well, being on par for subtask a and c, and outperforming on subtask b. Of note is the large difference between the validation and testing accuracy on subtask b, which indicates a very high degree of overfitting on our model. As mentioned before, we speculate that this is due to the large tag and data discrepency between the two data sets. The creator of the OffensEval competition mentioned in their final report that they wish to tackle these two areas in future iterations, and we hope to see a better outcome should it happen.
+        \begin{center}
+            \begin{tabular}{l|ccc}
+                Dataset & Subtask a & Subtask b & Subtask c \\
+                \hline
+                CNN & 31s & 10s & 41s \\
+                BiLSTM & 61s & 22s & 81s \\
+                BiGRU & 56s & 17s & 81s
+            \end{tabular}       
+            \captionof{table}{Training time for each NN model.}     
+            \label{nnTimeTable}
+        \end{center}
+
+        Table \ref{nnTimeTable} shows the training time for each of our NN models, which provides a very clear insight on the advantages that such models can provide. Compared to the 30+ minutes on general machine learning models, or hours long training on BERT, our neural networks can achieve an very acceptable rate of accuracy all while being incredibly fast to train. Coupled with the ease of performing "warm start" training on such models means that this method can be very cost effective, particularly in a online training method.
     \end{multicols}
     
     \section{Conclusion}
+    In this paper, we trained NLP models to recognize offensive language in tweets, as well as additional analysis on targetation of entities. We tested a wide range of models, including basic count and filter based models, general machine learning methods, and deep learning NLP models. Our best performing model, BERT, achieve a testing accuracy of 0.8023, 0.6827, and 0.5986 on the three subtasks, which would have attained ranks 9, 11, and 10 in the original competition. However, the long training time required for BERT means that we find it hard to recommend using it in a real world scenario, and would consider the use of neural network based models like CNN should such circumstances arise.
 
+    For possible future works, we would like to try this problem set again on a more complete data set, and perhaps do some additional tuning or leverage the power of GPUCompute to increase the performances of our models to acceptable rates. We would also like to further analyze the reason behind the overfitting issue on subtask b, and possibly come up with a solution to remedy such a problem.
 
         \vskip 5cm
 \bibliography{report}{}
